@@ -17,20 +17,21 @@ public Receipt(Sale sale) {
    
     StringBuilder sb = new StringBuilder();
 
-    // Header
+    // Header and time of sale
     sb.append("=== RECEIPT ===\n\n");
     sb.append("Time of sale: ").append(sale.getTimeOfSale()).append("\n\n");
         
     sb.append("Items:\n");
+    
+    // Generate a list of items and its quantities
 
-    double totalSalePrice = 0;
+  
     for (Map.Entry<Item, Integer> entry : sale.getItemQuantityMap().entrySet()) {
         Item item = entry.getKey();
         int quantity = entry.getValue();
             
         double itemPrice = item.getItemPrice() * (1 + item.getVAT());
-        double itemTotalPrice = itemPrice * quantity;
-        totalSalePrice += itemTotalPrice;
+        
             
         sb.append(quantity);
         sb.append(" - ");
@@ -38,17 +39,16 @@ public Receipt(Sale sale) {
         sb.append(" - ");
         sb.append(itemPrice).append(" SEK \n");
             
-        sb.append("\n");
+        
     }
        
     // Total price
-    sb.append("Total price: ").append(totalSalePrice).append(" SEK\n");
+    sb.append("Total price: ").append(sale.getTotalPrice()).append(" SEK\n");
 
     // Payment
     sb.append("Payment: ").append(sale.getPayment()).append(" SEK\n");
 
-        
-    sb.append("\nThank you for your purchase!");
+
 
     this.receiptText = sb.toString();
 }

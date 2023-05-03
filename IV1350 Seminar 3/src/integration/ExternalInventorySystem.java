@@ -18,7 +18,7 @@ public class ExternalInventorySystem {
         inventory = new ArrayList<Item>();
         inventory.add(new Item(1, 14,0, "Milk"));
         inventory.add(new Item(2, 10,0.2, "Tomato"));
-        inventory.add(new Item(3, 3.5,0.14, "Orange Juice"));
+        inventory.add(new Item(3, 3.5,0.12, "Orange Juice"));
         inventory.add(new Item(4, 2.5,0.1, "Apple Juice"));
         inventory.add(new Item(5, 8,0.4, "Bananas"));
         inventory.add(new Item(6, 3, 0.1,"Carrots"));
@@ -38,11 +38,12 @@ public class ExternalInventorySystem {
     }
     
     /**
-     * Removes an item from the inventory.
+     *  Private and only used inside updateInventory
+     *  Removes an item from the inventory.
      * 
      * @param item the item to be removed from the inventory.
      */
-    public void removeItem(Item item) {
+    private void removeItem(Item item) {
         inventory.remove(item);
     }
     

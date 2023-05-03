@@ -25,6 +25,9 @@ public class Sale {
 
 	/**
 	 * Creates a new Sale object.
+	 * initializes empty HashMap and ArrayList and sets timeOfSale 
+	 * Hashmap is for keeping track of quantities and itemList is a list of items
+	 * 
 	 *
 	 * @param printer The printer to be used to print the receipt.
 	 */
@@ -74,15 +77,15 @@ public class Sale {
 
 	/**
 	 * Applies a discount to the total price of the sale.
-	 * The discount is given as a percentage and must be between 0 and 1.
+	 * The discount is given as a decimal and must be between 0 and 1.
 	 *
 	 * @param inputDiscount The discount to be applied to the sale.
 	 * @return The new total price of the sale after the discount has been applied.
 	 */
-	public double applyDiscount(double inputDiscount) {
+	public void applyDiscount(double inputDiscount) {
 	    discountPercentage = inputDiscount;
 	    totalPrice *= inputDiscount;
-	    return totalPrice;
+	   
 	}
 
 	/**

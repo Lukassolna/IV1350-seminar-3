@@ -43,6 +43,7 @@ class ControllerTest {
         boolean result = controller.enterIdentifier(1);
         assertTrue(result, "enterIdentifier() should return true for a valid item ID");
         assertEquals(1, controller.getSaleInformation().getItemList().size(), "Sale should have one item after adding a valid item ID");
+        assertEquals(1,controller.getSaleInformation().getItemList().get(0).getItemID());
     }
 
     @Test
@@ -67,12 +68,12 @@ class ControllerTest {
    
     }
     @Test
-    void testInvalidCustomerId() {
+    void testFetchDiscountInvalidCustomerId() {
     	  controller.startSale();
           controller.enterIdentifier(1);
           
           double priceBefore=controller.getSaleInformation().getTotalPrice();
-          controller.fetchDiscount(4);
+          controller.fetchDiscount(40);
           
           double priceAfter=controller.getSaleInformation().getTotalPrice();
          
@@ -97,6 +98,14 @@ class ControllerTest {
         assertEquals(0, controller.getSaleInformation().getPayment(), "Payment should be recorded correctly after calling pay() with an amount of zero");
         assertEquals(0, cashRegister.getTotalBalance(), "Cash register balance should not be updated after calling pay() with an amount of zero");
     }
-
-     
+    
+    @Test
+    public void testEndSale() {
+        controller.startSale();
+       
+        controller.enterIdentifier(1);
+        
+        double expectedTotalPrice = 14; // the expected total price with VAT and discounts applied
+        assertEquals(expectedTotalPrice, controller.endSale(), 0.01); // delta of 0.01 to account for floating point errors
+    }
 }
