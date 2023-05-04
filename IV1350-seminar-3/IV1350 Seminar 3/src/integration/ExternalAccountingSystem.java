@@ -5,7 +5,6 @@ package integration;
 
 import java.util.ArrayList;
 import java.util.List;
-
 import model.Sale;
 
 public class ExternalAccountingSystem {
