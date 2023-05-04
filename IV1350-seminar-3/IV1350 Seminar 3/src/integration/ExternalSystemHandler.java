@@ -27,8 +27,7 @@ public class ExternalSystemHandler {
 	 * Returns the DiscountDatabase instance associated with this
 	 * ExternalSystemHandler.
 	 *
-	 * @return the DiscountDatabase instance associated with this
-	 *         ExternalSystemHandler.
+	 * @return the DiscountDatabase instance associated with this ExternalSystemHandler.
 	 */
 	public DiscountDatabase getDiscountDatabase() {
 		return discountDatabase;
@@ -38,8 +37,7 @@ public class ExternalSystemHandler {
 	 * Returns the ExternalAccountingSystem instance associated with this
 	 * ExternalSystemHandler.
 	 *
-	 * @return the ExternalAccountingSystem instance associated with this
-	 *         ExternalSystemHandler.
+	 * @return the ExternalAccountingSystem instance associated with this ExternalSystemHandler.
 	 */
 	public ExternalAccountingSystem getExternalAccountingSystem() {
 		return extAcc;
@@ -49,8 +47,7 @@ public class ExternalSystemHandler {
 	 * Returns the ExternalInventorySystem instance associated with this
 	 * ExternalSystemHandler.
 	 *
-	 * @return the ExternalInventorySystem instance associated with this
-	 *         ExternalSystemHandler.
+	 * @return the ExternalInventorySystem instance associated with this ExternalSystemHandler.
 	 */
 	public ExternalInventorySystem getExternalInventorySystem() {
 		return extInv;
@@ -67,7 +64,6 @@ public class ExternalSystemHandler {
 		for (Item item : sale.getItemList()) {
 			extInv.updateInventory(item);
 		}
-
 		// Update external accounting system with the sale information
 		extAcc.updateAccounting(sale);
 	}
@@ -75,14 +71,11 @@ public class ExternalSystemHandler {
 	/**
 	 * Fetches the discount to be applied to a sale based on the customer ID.
 	 *
-	 * @param customerID the ID of the customer for whom the discount should be
-	 *                   applied.
-	 * @return the discount amount to be applied to the sale (as a decimal value
-	 *         between 0 and 1).
+	 * @param customerID the ID of the customer for whom the discount should be applied.
+	 * @return the discount amount to be applied to the sale (as a decimal value between 0 and 1).
 	 */
 	public double fetchDiscount(int customerID) {
 		double discountToApply = discountDatabase.fetchDiscount(customerID);
-		
 		return discountToApply;
 	}
 }
