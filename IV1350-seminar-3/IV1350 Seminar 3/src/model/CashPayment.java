@@ -1,13 +1,13 @@
 package model;
 
 public class CashPayment {
+	private double amount;
+	
 	/**
 	 * Represents a cash payment.
 	 * 
 	 * @param amount the amount of cash paid
 	 */
-	private double amount;
-
 	public CashPayment(double amount) {
 		this.amount = amount;
 	}
@@ -20,5 +20,4 @@ public class CashPayment {
 	public double getAmount() {
 		return amount;
 	}
-
 }
