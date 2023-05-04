@@ -1,5 +1,4 @@
 /**
-
 Represents a receipt for a sale, containing information about the sale and its items, total price, and payment information.
 */
 package model;

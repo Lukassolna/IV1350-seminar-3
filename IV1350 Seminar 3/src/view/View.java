@@ -58,7 +58,7 @@ public class View {
 		
 		System.out.print("Enter customer ID for discount: ");
 		int customerId = scanner.nextInt();
-		controller.fetchDiscount(customerId);
+		controller.applyDiscount(customerId);
 		double totalPrice = controller.endSale();
 		System.out.println("Discount has been added. The new total is: " + totalPrice);
 
@@ -80,3 +80,4 @@ public class View {
 	}
 
 }
+

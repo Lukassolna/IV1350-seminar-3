@@ -1,5 +1,4 @@
 /**
-
 A class representing an external accounting system that keeps track of all sales made by the store stored as a list of Sale objects
 */
 package integration;

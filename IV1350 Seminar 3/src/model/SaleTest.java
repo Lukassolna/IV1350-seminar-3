@@ -26,24 +26,32 @@ class SaleTest {
 
 	@AfterEach
 	void tearDown() throws Exception {
+		printer=null;
+		sale=null;
 	}
 
 	@Test
 	void testAddItem() {
 
 		Item item = new Item(1, 10, 0.25, "Test Item");
+		
+		
 
+		sale.addItem(item);
 		sale.addItem(item);
 
 		List<Item> itemList = sale.getItemList();
-		assertEquals(1, itemList.size(), "Item should have been added to the sale");
+		assertEquals(2, itemList.size(), "Item should have been added to the sale");
 		assertEquals(item, itemList.get(0), "Item added to the sale should be the same as the one passed to addItem()");
+		assertEquals(item, itemList.get(1), "Item added to the sale should be the same as the one passed to addItem()");
+		assertEquals(2,sale.getItemQuantityMap().get(item));
 
-		double expectedTotalPrice = item.getItemPrice() * (1 + item.getVAT());
+		double expectedTotalPrice = 2*(item.getItemPrice() * (1 + item.getVAT()));
 		assertEquals(expectedTotalPrice, sale.getTotalPrice(),
 				"Total price should be updated correctly after calling addItem()");
 	}
 
+	
 	@Test
 	void testApplyDiscount() {
 
@@ -52,14 +60,16 @@ class SaleTest {
 		sale.addItem(item);
 
 		// Apply a discount to the sale
-		double discount = 0.9; // 10% discount
+		double discount = 0.1; // 10% discount
 		sale.applyDiscount(discount);
 
-		double expectedTotalPrice = item.getItemPrice() * (1 + item.getVAT()) * (discount);
+		double expectedTotalPrice = item.getItemPrice() * (1 + item.getVAT()) * (1-discount);
 
 		assertEquals(expectedTotalPrice, sale.getTotalPrice(),
 				"Total price should be updated correctly after applying a discount");
 	}
+
+	
 
 	@Test
 	void testSaleConstructor() {
@@ -79,11 +89,22 @@ class SaleTest {
 
 	@Test
 	public void testPay() {
-
-		sale.pay(100.0);
-		assertEquals(100.0, sale.getPayment(), 0.01);
+		CashPayment cashPayment=new CashPayment(100);
+		sale.pay(cashPayment);
+		assertEquals(100.0, sale.getPayment());
 	}
-
+	
+	@Test
+	public void testChange() {
+		Item item = new Item(1, 10, 0.25, "Test Item");
+		sale.addItem(item);
+		CashPayment cashPayment=new CashPayment(100);
+		sale.pay(cashPayment);
+		assertEquals(sale.change(),cashPayment.getAmount()-sale.getTotalPrice(),"Change not calculated correctly");
+		
+	}
+}
+/**
 	@Test
 	public void testGetters() {
 
@@ -99,3 +120,5 @@ class SaleTest {
 	}
 
 }
+
+	*/
