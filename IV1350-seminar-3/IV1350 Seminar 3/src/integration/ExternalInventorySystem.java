@@ -1,7 +1,6 @@
 package integration;
 
 import java.util.ArrayList;
-
 import model.Item;
 
 /**
@@ -40,7 +39,7 @@ public class ExternalInventorySystem {
 	}
 
 	/**
-	 * Private and only used inside updateInventory Removes an item from the
+	 * Private and only used inside updateInventory. Removes an item from the
 	 * inventory.
 	 * 
 	 * @param item the item to be removed from the inventory.
@@ -82,4 +81,3 @@ public class ExternalInventorySystem {
 		removeItem(item);
 	}
 }
-
