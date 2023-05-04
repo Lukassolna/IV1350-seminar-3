@@ -70,7 +70,7 @@ public class Controller {
 		saleInformation.pay(amount);
 		extSysHan.updateExternalSystems(saleInformation);
 	}
-	
+
 	public double change() {
 		return saleInformation.change();
 	}

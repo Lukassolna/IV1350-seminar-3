@@ -31,7 +31,7 @@ public class Receipt {
 			Item item = entry.getKey();
 			int quantity = entry.getValue();
 
-			double itemPrice = item.getItemPrice() * (1 + item.getVAT());
+			double itemPrice = Math.round(item.getItemPrice() * (1 + item.getVAT()) * 100) / 100.0;
 
 			sb.append(quantity);
 			sb.append(" - ");

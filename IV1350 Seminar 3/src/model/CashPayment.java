@@ -7,7 +7,7 @@ public class CashPayment {
 	 * @param amount the amount of cash paid
 	 */
 	private double amount;
-	
+
 	public CashPayment(double amount) {
 		this.amount = amount;
 	}
@@ -20,5 +20,5 @@ public class CashPayment {
 	public double getAmount() {
 		return amount;
 	}
-	
+
 }
