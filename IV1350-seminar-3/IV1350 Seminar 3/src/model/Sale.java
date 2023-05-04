@@ -11,7 +11,6 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-
 import integration.Printer;
 
 public class Sale {
@@ -27,7 +26,6 @@ public class Sale {
 	 * Creates a new Sale object. initializes empty HashMap and ArrayList and sets
 	 * timeOfSale Hashmap is for keeping track of quantities and itemList is a list
 	 * of items
-	 * 
 	 *
 	 * @param printer The printer to be used to print the receipt.
 	 */
@@ -53,7 +51,6 @@ public class Sale {
 		} else {
 			itemQuantityMap.put(item, 1);
 		}
-
 		totalPrice += item.getItemPrice() * (1 + item.getVAT());
 	}
 
@@ -87,9 +84,6 @@ public class Sale {
 
 	}
 
-
-	
-
 	/**
 	 * Sets the payment amount for the sale.
 	 *
@@ -107,26 +101,50 @@ public class Sale {
 		printer.print(receipt);
 	}
 
+	/**
+	 * Get the payment that has been provided by the customer.
+	 *
+	 * @return the amount paid for the sale.
+	 */
 	public double getPayment() {
 		return payment.getAmount();
 	}
-
+	
+	/**
+	 * Calculate the change after receiving the sale payment.
+	 *
+	 * @return the amount of change owed to the customer.
+	 */
 	public double change() {
 		change = payment.getAmount() - totalPrice;
 		return Math.round(change * 100) / 100.0;
 	}
-
+	
+	/**
+	 * Retrieve the current time of the sale.
+	 *
+	 * @return the time of the sale.
+	 */
 	public LocalTime getTimeOfSale() {
 		return timeOfSale;
 	}
 
+	/**
+	 * Retrieve the map containing item quantities.
+	 *
+	 * @return itemQuantityMap which specifies item quantities.
+	 */
 	public Map<Item, Integer> getItemQuantityMap() {
 		return itemQuantityMap;
 
 	}
 
+	/**
+	 * Get the printer associated with the sale.
+	 *
+	 * @return printer used to print the sale receipt.
+	 */
 	public Printer getPrinter() {
 		return printer;
 	}
-	
 }
