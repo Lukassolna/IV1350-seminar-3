@@ -42,9 +42,7 @@ public class Controller {
 		if (foundItem != null) {
 			saleInformation.addItem(foundItem);
 			return true;
-
 		} else {
-
 			return false;
 		}
 	}
