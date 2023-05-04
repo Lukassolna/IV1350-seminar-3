@@ -1,5 +1,7 @@
 package controller;
 
+import java.util.List;
+
 import integration.ExternalSystemHandler;
 import integration.Printer;
 import model.CashRegister;
@@ -73,6 +75,10 @@ public class Controller {
 
 	public double change() {
 		return saleInformation.change();
+	}
+	
+	public List<Item> getItemsInSale() {
+		return saleInformation.getItemList();
 	}
 
 	/**
