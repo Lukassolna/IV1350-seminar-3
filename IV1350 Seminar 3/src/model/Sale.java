@@ -22,6 +22,7 @@ public class Sale {
 	private Printer printer; // the printer used to print the receipt
 	private List<Item> itemList; // a list of items in the sale
 	private double discountPercentage; // the discount percentage applied to the sale
+	private double change;
 
 	/**
 	 * Creates a new Sale object.
@@ -72,7 +73,7 @@ public class Sale {
 	 * @return The total price of the sale.
 	 */
 	public double getTotalPrice() {
-	    return totalPrice;
+	    return Math.round(totalPrice * 100) / 100.0;
 	}
 
 	/**
@@ -116,6 +117,11 @@ public class Sale {
 
     public double getPayment() {
         return payment;
+    }
+    
+    public double change() {
+    	change = payment - totalPrice;
+    	return Math.round(change * 100) / 100.0;
     }
 
     public LocalTime getTimeOfSale() {

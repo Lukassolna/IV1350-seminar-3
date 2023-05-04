@@ -20,4 +20,5 @@ public class CashPayment {
 	public double getAmount() {
 		return amount;
 	}
+	
 }

@@ -23,5 +23,6 @@ public class CashRegister {
     public double getTotalBalance() {
         return totalBalance;
     }
+    
 }
 
