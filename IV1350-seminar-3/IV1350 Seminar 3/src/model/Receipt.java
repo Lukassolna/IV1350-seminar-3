@@ -21,7 +21,6 @@ public class Receipt {
 		// Header and time of sale
 		sb.append("=== RECEIPT ===\n\n");
 		sb.append("Time of sale: ").append(sale.getTimeOfSale()).append("\n\n");
-
 		sb.append("Items:\n");
 
 		// Generate a list of items and its quantities
@@ -29,7 +28,6 @@ public class Receipt {
 		for (Map.Entry<Item, Integer> entry : sale.getItemQuantityMap().entrySet()) {
 			Item item = entry.getKey();
 			int quantity = entry.getValue();
-
 			double itemPrice = Math.round(item.getItemPrice() * (1 + item.getVAT()) * 100) / 100.0;
 
 			sb.append(quantity);
@@ -37,15 +35,12 @@ public class Receipt {
 			sb.append(item.getItemName());
 			sb.append(" - ");
 			sb.append(itemPrice).append(" SEK \n");
-
 		}
 
 		// Total price
 		sb.append("Total price: ").append(sale.getTotalPrice()).append(" SEK\n");
-
 		// Payment
 		sb.append("Payment: ").append(sale.getPayment()).append(" SEK\n");
-		
 		// Change
 		sb.append("Change: ").append(sale.change()).append(" SEK\n");
 
@@ -60,5 +55,4 @@ public class Receipt {
 	public String getReceiptText() {
 		return receiptText;
 	}
-
 }
