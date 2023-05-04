@@ -6,6 +6,7 @@ It also provides methods for adding items to the sale, calculating the total pri
 and printing a receipt.
 */
 package model;
+
 import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -25,37 +26,37 @@ public class Sale {
 	private double change;
 
 	/**
-	 * Creates a new Sale object.
-	 * initializes empty HashMap and ArrayList and sets timeOfSale 
-	 * Hashmap is for keeping track of quantities and itemList is a list of items
+	 * Creates a new Sale object. initializes empty HashMap and ArrayList and sets
+	 * timeOfSale Hashmap is for keeping track of quantities and itemList is a list
+	 * of items
 	 * 
 	 *
 	 * @param printer The printer to be used to print the receipt.
 	 */
 	public Sale(Printer printer) {
-	    timeOfSale = LocalTime.now();
-	    itemQuantityMap = new HashMap<>();
-	    this.printer = printer;
-	    itemList = new ArrayList<>();
+		timeOfSale = LocalTime.now().withNano(0);
+		itemQuantityMap = new HashMap<>();
+		this.printer = printer;
+		itemList = new ArrayList<>();
 	}
 
 	/**
-	 * Adds an item to the sale.
-	 * If the item is already in the sale, its quantity is increased. Otherwise, it is added to the sale with a quantity of 1.
-	 * The total price of the sale is updated accordingly.
+	 * Adds an item to the sale. If the item is already in the sale, its quantity is
+	 * increased. Otherwise, it is added to the sale with a quantity of 1. The total
+	 * price of the sale is updated accordingly.
 	 *
 	 * @param item The item to be added to the sale.
 	 */
 	public void addItem(Item item) {
-	    itemList.add(item);
-	    if (itemQuantityMap.containsKey(item)) {
-	        int quantity = itemQuantityMap.get(item);
-	        itemQuantityMap.put(item, quantity + 1);
-	    } else {
-	        itemQuantityMap.put(item, 1);
-	    }
+		itemList.add(item);
+		if (itemQuantityMap.containsKey(item)) {
+			int quantity = itemQuantityMap.get(item);
+			itemQuantityMap.put(item, quantity + 1);
+		} else {
+			itemQuantityMap.put(item, 1);
+		}
 
-	    totalPrice += item.getItemPrice() * (1 + item.getVAT());
+		totalPrice += item.getItemPrice() * (1 + item.getVAT());
 	}
 
 	/**
@@ -64,7 +65,7 @@ public class Sale {
 	 * @return The list of items in the sale.
 	 */
 	public List<Item> getItemList() {
-	    return itemList;
+		return itemList;
 	}
 
 	/**
@@ -73,20 +74,20 @@ public class Sale {
 	 * @return The total price of the sale.
 	 */
 	public double getTotalPrice() {
-	    return Math.round(totalPrice * 100) / 100.0;
+		return Math.round(totalPrice * 100) / 100.0;
 	}
 
 	/**
-	 * Applies a discount to the total price of the sale.
-	 * The discount is given as a decimal and must be between 0 and 1.
+	 * Applies a discount to the total price of the sale. The discount is given as a
+	 * decimal and must be between 0 and 1.
 	 *
 	 * @param inputDiscount The discount to be applied to the sale.
 	 * @return The new total price of the sale after the discount has been applied.
 	 */
 	public void applyDiscount(double inputDiscount) {
-	    discountPercentage = inputDiscount;
-	    totalPrice *= inputDiscount;
-	   
+		discountPercentage = inputDiscount;
+		totalPrice *= inputDiscount;
+
 	}
 
 	/**
@@ -95,7 +96,7 @@ public class Sale {
 	 * @return The discount percentage applied to the sale.
 	 */
 	public double getDiscount() {
-	    return discountPercentage;
+		return discountPercentage;
 	}
 
 	/**
@@ -104,35 +105,36 @@ public class Sale {
 	 * @param paidAmount The amount paid for the sale.
 	 */
 	public void pay(double paidAmount) {
-	    payment = paidAmount;
+		payment = paidAmount;
 	}
 
 	/**
 	 * Prints a receipt for the sale using the printer.
 	 */
 	public void printReceipt() {
-	    Receipt receipt = new Receipt(this);
-	    printer.print(receipt);
+		Receipt receipt = new Receipt(this);
+		printer.print(receipt);
 	}
 
-    public double getPayment() {
-        return payment;
-    }
-    
-    public double change() {
-    	change = payment - totalPrice;
-    	return Math.round(change * 100) / 100.0;
-    }
+	public double getPayment() {
+		return payment;
+	}
 
-    public LocalTime getTimeOfSale() {
-        return timeOfSale;
-    }
-    
-    public Map<Item, Integer> getItemQuantityMap() {
-    	return itemQuantityMap;
-    	
-    }
-    public Printer getPrinter() {
-    	return printer;
-    }
+	public double change() {
+		change = payment - totalPrice;
+		return Math.round(change * 100) / 100.0;
+	}
+
+	public LocalTime getTimeOfSale() {
+		return timeOfSale;
+	}
+
+	public Map<Item, Integer> getItemQuantityMap() {
+		return itemQuantityMap;
+
+	}
+
+	public Printer getPrinter() {
+		return printer;
+	}
 }

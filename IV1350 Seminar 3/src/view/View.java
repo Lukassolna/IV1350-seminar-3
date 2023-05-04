@@ -36,7 +36,7 @@ public class View {
 
 		Scanner scanner = new Scanner(System.in);
 		int itemId;
-				
+
 		do {
 			System.out.print("Enter item ID (or 0 to finish): ");
 			itemId = scanner.nextInt();
@@ -45,32 +45,30 @@ public class View {
 				if (!itemIdValidity) {
 					System.out.println("The item (ID: " + itemId + ") is not valid");
 				}
-			}			
+			}
 			System.out.println("\nRunning total is: " + controller.getSaleInformation().getTotalPrice() + " SEK\n");
-			
+
 		} while (itemId != 0);
-
+		
 		System.out.print("Enter customer ID for discount: ");
-
 		int customerId = scanner.nextInt();
 		controller.fetchDiscount(customerId);
-
 		double totalPrice = controller.endSale();
-		System.out.println("Sale has concluded and the total price is : " + totalPrice + "");
-		
+		System.out.println("Discount has been added. The new total is: " + totalPrice);
+
 		double payment;
 		do {
-		    System.out.print("Enter payment amount: ");
-		    payment = scanner.nextDouble();
-		    if (payment < controller.getSaleInformation().getTotalPrice()) {
-		        System.out.println("Payment must exceed the sale total!");
-		    }
+			System.out.print("Enter payment amount: ");
+			payment = scanner.nextDouble();
+			if (payment < controller.getSaleInformation().getTotalPrice()) {
+				System.out.println("Payment must exceed the sale total!");
+			}
 		} while (payment < controller.getSaleInformation().getTotalPrice());
 
 		controller.pay(payment);
 		double change = controller.change();
 		System.out.println("Your change: " + change + "\n");
-		
+
 		controller.printReceipt();
 		scanner.close();
 	}
