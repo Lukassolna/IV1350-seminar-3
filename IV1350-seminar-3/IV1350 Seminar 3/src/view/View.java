@@ -1,15 +1,12 @@
 package view;
 
 import java.util.Scanner;
-
 import controller.Controller;
 import model.Item;
 
 /**
  * View is a class that represents a user interface and contains hard coded
  * controller calls + printouts
- * 
- * 
  */
 
 public class View {
@@ -18,8 +15,7 @@ public class View {
 	/**
 	 * Constructs a new View object with the specified Controller.
 	 * 
-	 * @param controller the Controller object to use for handling user input and
-	 *                   processing sales
+	 * @param controller the Controller object to use for handling user input and processing sales.
 	 */
 	public View(Controller controller) {
 		this.controller = controller;
@@ -31,7 +27,6 @@ public class View {
 	 * 
 	 * (next Double input using locale standard of comma instead of . for input)
 	 */
-
 	public void start() {
 		controller.startSale();
 
@@ -78,6 +73,4 @@ public class View {
 		controller.printReceipt();
 		scanner.close();
 	}
-
 }
-
