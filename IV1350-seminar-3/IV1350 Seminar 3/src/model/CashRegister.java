@@ -11,7 +11,6 @@ public class CashRegister {
 	 */
 	public void addPayment(CashPayment payment) {
 		this.payment = payment;
-		// Add the payment amount to the total balance
 		this.totalBalance += payment.getAmount();
 	}
 
@@ -23,5 +22,4 @@ public class CashRegister {
 	public double getTotalBalance() {
 		return totalBalance;
 	}
-
 }
