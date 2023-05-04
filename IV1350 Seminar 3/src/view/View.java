@@ -3,6 +3,7 @@ package view;
 import java.util.Scanner;
 
 import controller.Controller;
+import model.Item;
 
 /**
  * View is a class that represents a user interface and contains hard coded
@@ -46,7 +47,12 @@ public class View {
 					System.out.println("The item (ID: " + itemId + ") is not valid");
 				}
 			}
-			System.out.println("\nRunning total is: " + controller.getSaleInformation().getTotalPrice() + " SEK\n");
+			System.out.println("\nRunning total is: " + controller.getSaleInformation().getTotalPrice() + " SEK\n\n_______");
+			System.out.println("Current cart:\n");
+			for(Item item : controller.getItemsInSale()) {
+				System.out.println(item.getItemName() + ": " + item.getItemPrice()+"\n");
+			}
+			System.out.println("_______\n");
 
 		} while (itemId != 0);
 		
