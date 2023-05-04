@@ -11,8 +11,7 @@ public class Receipt {
 	/**
 	 * Constructs a new Receipt object based on the provided Sale object.
 	 * 
-	 * @param sale the Sale object representing the sale for which the receipt is
-	 *             being created
+	 * @param sale the Sale object representing the sale for which the receipt is being created.
 	 */
 	public Receipt(Sale sale) {
 
