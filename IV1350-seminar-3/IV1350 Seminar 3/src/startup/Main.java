@@ -18,9 +18,6 @@ public class Main {
 	 * point for the program and is responsible for setting up the necessary objects
 	 * and starting the program execution.
 	 * 
-	 * 
-	 * 
-	 * 
 	 * @param args
 	 */
 	public static void main(String[] args) {
