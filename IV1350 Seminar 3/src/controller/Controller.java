@@ -70,6 +70,10 @@ public class Controller {
 		saleInformation.pay(amount);
 		extSysHan.updateExternalSystems(saleInformation);
 	}
+	
+	public double change() {
+		return saleInformation.change();
+	}
 
 	/**
 	 * Ends the current sale and returns the total price of the items in the sale.
