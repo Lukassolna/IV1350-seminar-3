@@ -6,7 +6,6 @@ public class Item {
 	private double VAT;
 	private String itemName;
 	
-
 	/**
 	 * Constructs an Item object with the given parameters.
 	 *
