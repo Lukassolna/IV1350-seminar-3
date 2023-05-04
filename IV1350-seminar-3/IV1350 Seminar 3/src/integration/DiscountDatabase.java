@@ -24,10 +24,8 @@ public class DiscountDatabase {
 	/**
 	 * Looks up the discount percentage for the given customer ID.
 	 *
-	 * @param customerID the ID of the customer for which to fetch the discount
-	 *                   percentage
-	 * @return the discount percentage as a decimal value between 0 and 1. 0 if no
-	 *         discount is found
+	 * @param customerID the ID of the customer for which to fetch the discount percentage
+	 * @return the discount percentage as a decimal value between 0 and 1. 0 if no discount is found.
 	 */
 	public double fetchDiscount(int customerID) {
 		Double discountPercentage = discounts.get(customerID);
