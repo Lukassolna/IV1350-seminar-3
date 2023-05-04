@@ -1,7 +1,6 @@
 package controller;
 
 import java.util.List;
-
 import integration.ExternalSystemHandler;
 import integration.Printer;
 import model.CashRegister;
@@ -53,8 +52,6 @@ public class Controller {
 	 * Fetches the discount for a customer based on their ID and the current sale.
 	 * 
 	 * @param customerID      the ID of the customer
-	 * @param saleinformation the current sale
-	 * @return the discount percentage for the customer
 	 */
 	public void applyDiscount(int customerID) {
 		double discountToApply = extSysHan.fetchDiscount(customerID);
@@ -74,6 +71,11 @@ public class Controller {
 		extSysHan.updateExternalSystems(saleInformation);
 	}
 
+	/**
+	 * Processes the change from the payment.
+	 * 
+	 * @return the amount owed to the customer
+	 */
 	public double change() {
 		return saleInformation.change();
 	}
@@ -97,10 +99,13 @@ public class Controller {
 	public void printReceipt() {
 		saleInformation.printReceipt();
 	}
-
+	
+	/**
+	 * Retrieves information on the current sale
+	 * 
+	 * @return sale information
+	 */
 	public Sale getSaleInformation() {
 		return saleInformation;
 	}
 }
-
-
