@@ -1,5 +1,4 @@
 /**
-
 This class represents a database of discounts, stored as a map with customer IDs as keys and
 discount percentages as values.
 */

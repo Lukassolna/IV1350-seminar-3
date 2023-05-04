@@ -56,8 +56,8 @@ public class Controller {
 	 * @param saleinformation the current sale
 	 * @return the discount percentage for the customer
 	 */
-	public void fetchDiscount(int customerID) {
-		double discountToApply = extSysHan.calculateDiscount(customerID);
+	public void applyDiscount(int customerID) {
+		double discountToApply = extSysHan.fetchDiscount(customerID);
 		saleInformation.applyDiscount(discountToApply);
 	}
 
@@ -68,8 +68,9 @@ public class Controller {
 	 * @param amount the amount of cash paid by the customer
 	 */
 	public void pay(double amount) {
-		cashRegister.addPayment(new CashPayment(amount));
-		saleInformation.pay(amount);
+		CashPayment cashPayment=new CashPayment(amount);
+		cashRegister.addPayment(cashPayment);
+		saleInformation.pay(cashPayment);
 		extSysHan.updateExternalSystems(saleInformation);
 	}
 
@@ -101,3 +102,5 @@ public class Controller {
 		return saleInformation;
 	}
 }
+
+

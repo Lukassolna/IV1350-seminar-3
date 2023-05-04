@@ -1,5 +1,4 @@
 /**
-
 The Sale class represents a sale in the point of sale system.
 It keeps track of the items purchased, the total price, the payment received, and the time of the sale.
 It also provides methods for adding items to the sale, calculating the total price, applying a discount,
@@ -19,10 +18,9 @@ public class Sale {
 	private LocalTime timeOfSale; // the time the sale was made
 	private Map<Item, Integer> itemQuantityMap; // a map of items and their quantities in the sale
 	private double totalPrice; // the total price of the sale
-	private double payment; // the amount of payment received for the sale
+	private CashPayment payment; // the amount of payment received for the sale
 	private Printer printer; // the printer used to print the receipt
 	private List<Item> itemList; // a list of items in the sale
-	private double discountPercentage; // the discount percentage applied to the sale
 	private double change;
 
 	/**
@@ -79,33 +77,26 @@ public class Sale {
 
 	/**
 	 * Applies a discount to the total price of the sale. The discount is given as a
-	 * decimal and must be between 0 and 1.
+	 * decimal and must be between 0 and 1. Updates total price based on discount
 	 *
 	 * @param inputDiscount The discount to be applied to the sale.
-	 * @return The new total price of the sale after the discount has been applied.
 	 */
 	public void applyDiscount(double inputDiscount) {
-		discountPercentage = inputDiscount;
-		totalPrice *= inputDiscount;
+		double discountPercentage = 1-inputDiscount;
+		totalPrice *= discountPercentage;
 
 	}
 
-	/**
-	 * Returns the discount percentage applied to the sale.
-	 *
-	 * @return The discount percentage applied to the sale.
-	 */
-	public double getDiscount() {
-		return discountPercentage;
-	}
+
+	
 
 	/**
 	 * Sets the payment amount for the sale.
 	 *
 	 * @param paidAmount The amount paid for the sale.
 	 */
-	public void pay(double paidAmount) {
-		payment = paidAmount;
+	public void pay(CashPayment cashPayment) {
+		payment = cashPayment;
 	}
 
 	/**
@@ -117,11 +108,11 @@ public class Sale {
 	}
 
 	public double getPayment() {
-		return payment;
+		return payment.getAmount();
 	}
 
 	public double change() {
-		change = payment - totalPrice;
+		change = payment.getAmount() - totalPrice;
 		return Math.round(change * 100) / 100.0;
 	}
 
@@ -137,4 +128,5 @@ public class Sale {
 	public Printer getPrinter() {
 		return printer;
 	}
+	
 }

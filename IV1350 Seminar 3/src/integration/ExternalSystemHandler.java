@@ -73,16 +73,16 @@ public class ExternalSystemHandler {
 	}
 
 	/**
-	 * Calculates the discount to be applied to a sale based on the customer ID.
+	 * Fetches the discount to be applied to a sale based on the customer ID.
 	 *
 	 * @param customerID the ID of the customer for whom the discount should be
 	 *                   applied.
 	 * @return the discount amount to be applied to the sale (as a decimal value
 	 *         between 0 and 1).
 	 */
-	public double calculateDiscount(int customerID) {
+	public double fetchDiscount(int customerID) {
 		double discountToApply = discountDatabase.fetchDiscount(customerID);
-		double discountAmount = 1 - discountToApply;
-		return discountAmount;
+		
+		return discountToApply;
 	}
 }
